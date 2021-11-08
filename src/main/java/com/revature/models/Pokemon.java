@@ -4,6 +4,8 @@ import java.util.Objects;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Pokemon {
@@ -16,6 +18,7 @@ public class Pokemon {
 	private int baseXP;
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="trainerId" )
+	@JsonIgnore
 	private Trainer trainer;
 	public Pokemon() {
 		super();

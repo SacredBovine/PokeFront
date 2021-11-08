@@ -12,7 +12,7 @@ public class Trainer {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int trainerId;
 	private String name;
-	@OneToMany(mappedBy="pokeId", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="trainer", fetch=FetchType.EAGER)
 	private List<Pokemon> party;
 	public Trainer() {
 		super();
