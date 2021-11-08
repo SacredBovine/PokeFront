@@ -12,10 +12,14 @@ public class Trainer {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int trainerId;
 	private String name;
-	@OneToMany(mappedBy="pokeId")
+	@OneToMany(mappedBy="pokeId", fetch=FetchType.EAGER)
 	private List<Pokemon> party;
 	public Trainer() {
 		super();
+	}
+	public Trainer(String name) {
+		super();
+		this.name = name;
 	}
 	public Trainer(String name, List<Pokemon> party) {
 		super();

@@ -14,8 +14,8 @@ public class Pokemon {
 	private int pokedexId;
 	private String name;
 	private int baseXP;
-	@ManyToOne
-	@JoinColumn(name="trainerId")
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="trainerId" )
 	private Trainer trainer;
 	public Pokemon() {
 		super();
