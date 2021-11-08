@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+
 import com.revature.models.Trainer;
 import com.revature.services.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/trainers")
+@CrossOrigin
 public class TrainerController {
 
     private TrainerService trainerService;
@@ -31,10 +33,13 @@ public class TrainerController {
     }
 
     @PostMapping
-    public ResponseEntity<Trainer> addTrainer(@RequestBody Trainer trainer) {
+    public ResponseEntity<List<Trainer>> addTrainer(@RequestBody Trainer trainer) {
         trainerService.addOrUpdateTrainer(trainer);
-        return ResponseEntity.status(201).build();
+        
+        return ResponseEntity.status(201).body(trainerService.getAllTrainers());
     }
+    
+
 
     @PutMapping
     public ResponseEntity<Trainer> updateTrainer(@RequestBody Trainer trainer) {

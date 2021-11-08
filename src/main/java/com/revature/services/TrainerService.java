@@ -22,7 +22,7 @@ public class TrainerService {
     }
 
     public Trainer getById(int id) {
-        return trainerDAO.getById(id);
+        return trainerDAO.findById(id).get();
     }
 
     public void addOrUpdateTrainer(Trainer trainer) {

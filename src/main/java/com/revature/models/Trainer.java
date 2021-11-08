@@ -5,7 +5,10 @@ import java.util.Objects;
 
 import javax.persistence.*;
 
+import org.springframework.stereotype.Component;
+
 @Entity
+@Component
 public class Trainer {
 
 	@Id
