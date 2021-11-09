@@ -7,6 +7,8 @@ import javax.persistence.*;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Component
 public class Trainer {
@@ -16,7 +18,11 @@ public class Trainer {
 	private int trainerId;
 	private String name;
 	@OneToMany(mappedBy="trainer", fetch=FetchType.EAGER)
+	@JsonIgnoreProperties("trainer")
 	private List<Pokemon> party;
+	
+	
+	
 	public Trainer() {
 		super();
 	}

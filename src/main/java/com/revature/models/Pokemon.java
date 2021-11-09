@@ -7,6 +7,7 @@ import javax.persistence.*;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
@@ -19,13 +20,17 @@ public class Pokemon {
 	private int pokedexId;
 	private String name;
 	private int baseXP;
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
-	@JoinColumn(name="trainerId" )
-	@JsonIgnore
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.MERGE)
+	@JoinColumn(name="trainer" )
+	@JsonIgnoreProperties("party")
 	private Trainer trainer;
+	
+	
 	public Pokemon() {
 		super();
 	}
+	
+	
 	public Pokemon(int pokedexId, String name, int baseXP, Trainer trainer) {
 		super();
 		this.pokedexId = pokedexId;
